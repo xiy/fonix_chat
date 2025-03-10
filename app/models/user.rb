@@ -7,4 +7,10 @@ class User < ApplicationRecord
   has_many :messages
   has_many :channel_users
   has_many :channels, through: :channel_users
+
+  def messages_since_last_sent
+    Message.where("created_at > ?", last_sent_at)
+      .where.not(user_id: id)
+      .where("created_at > ?", messages.maximum(:created_at) || last_sent_at)
+  end
 end

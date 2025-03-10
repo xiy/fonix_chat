@@ -9,5 +9,6 @@ class Message < ApplicationRecord
     broadcast_append_to "channel_#{channel.id}_#{channel.name}",
                         target: "chat-box",
                         partial: "messages/message"
+    user.update(last_sent_at: Time.zone.now)
   }
 end

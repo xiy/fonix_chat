@@ -1,0 +1,19 @@
+<!-- app/views/weekly_email_mailer/weekly_summary.html.erb -->
+<h1>Your Weekly Chat Summary</h1>
+
+<p>Hello <%= @user.email %>,</p>
+
+<p>Here's your chat activity summary for the past week:</p>
+
+<ul>
+  <li>Messages sent: <%= @sent_messages_count %></li>
+  <li>Messages received: <%= @received_messages_count %></li>
+  <li><%= @total_messages_count %> messages have been exchanged in the last week.</li>
+  <% if @last_message_date %>
+    <li><%= @total_received_since_last_sent %> since your last message on <%= @last_message_date.strftime('%d %B') %>.</li>
+  <% else %>
+    <li><%= @total_received_since_last_sent %> messages received (you haven't sent any messages yet).</li>
+  <% end %>
+</ul>
+
+<p>Fonix Chat</p>

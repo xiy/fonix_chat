@@ -8,3 +8,9 @@
 #     command: "SoftDeletedRecord.due.delete_all"
 #     priority: 2
 #     schedule: at 5am every day
+
+production:
+  weekly_email:
+    class: WeeklyEmailJob
+    queue: background
+    schedule: at 10am every Sunday
