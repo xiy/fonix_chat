@@ -28,7 +28,7 @@ class MultiUserChatTest < ApplicationSystemTestCase
     sign_in @user1
     visit channel_path(@channel)
 
-    fill_in "Type your message...", with: "Hello from User 1"
+    fill_in "message_content", with: "Hello from User 1"
     click_on "Send"
 
     # Verify user1's message is visible
