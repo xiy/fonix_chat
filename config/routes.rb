@@ -11,4 +11,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  devise_for :users
+  devise_scope :user do
+    get "/" => "devise/sessions#new"
+  end
+  root "devise/sessions#new"
 end
