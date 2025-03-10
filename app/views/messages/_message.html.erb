@@ -1,5 +1,7 @@
 <div class="message">
-  <%= turbo_frame_tag dom_id(message) do %>
-   [<%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %>] <strong><%= message.user.email %></strong>: <%= message.content %>
-  <% end %>
+  <turbo-stream action="append" target="chat-box">
+    <template>
+      <p>[<%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %>] <strong><%= message.user.email %></strong>: <%= message.content %></p>
+    </template>
+  </turbo-stream>
 </div>
