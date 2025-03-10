@@ -13,7 +13,17 @@ Rails.application.routes.draw do
   # root "posts#index"
   devise_for :users
   devise_scope :user do
-    get "/" => "devise/sessions#new"
+    get "/users/sign_out" => "devise/sessions#destroy"
   end
-  root "devise/sessions#new"
+
+  resources :channels do
+    member do
+      post :join
+      delete :leave
+      get :leave
+    end
+    resources :messages, only: [ :create ]
+  end
+
+  root "channels#index"
 end

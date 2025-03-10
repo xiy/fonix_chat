@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: Hello, this is a test message
+  user: one
+  channel: one
+
+two:
+  content: Welcome to the chat app!
+  user: two
+  channel: one

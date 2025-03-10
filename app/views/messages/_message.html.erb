@@ -1,0 +1,5 @@
+<div class="message">
+  <%= turbo_frame_tag dom_id(message) do %>
+   [<%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %>] <strong><%= message.user.email %></strong>: <%= message.content %>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<div data-controller="chat-subscription" data-chat-subscription-channel-id-value="<%= @channel.id %>">
+  <h1><%= @channel.name %></h1>
+
+  <%= turbo_stream_from "channel_#{@channel.id}_#{@channel.name}" %>
+  
+  <div id="chat-box">
+    <%= render @messages %>
+  </div>
+
+  <%= form_with model: [@channel, Message.new], 
+                url: channel_messages_path(@channel), 
+                data: { 
+                  controller: "chat-form", 
+                  action: "submit->chat-form#submit turbo:submit-end->chat-form#clear"
+                } do |form| %>
+    <%= form.text_field :content, 
+                       placeholder: "Type your message...", 
+                       data: { chat_form_target: "input" } %>
+    <%= form.submit "Send" %>
+  <% end %>
+
+  <%= link_to "Back to Channels", channels_path %>
+  <%= link_to "Leave Channel", leave_channel_path(@channel), method: :delete %>
+</div>

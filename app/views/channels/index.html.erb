@@ -1,0 +1,14 @@
+<h1>Channels</h1>
+
+<ul>
+  <% @channels.each do |channel| %>
+    <li><%= link_to channel.name, channel %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create New Channel", new_channel_path %>
+<% if current_user %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
